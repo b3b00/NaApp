@@ -1,0 +1,22 @@
+<html>
+    <body>
+            @If.HasPosts
+            <table>
+            @Each.Posts
+            
+            <a href="/blog/post/@Current.PostId">@Current.Title</a><br>
+            <br>
+            <!--<tr>
+                <td colspan="2">[@Current[.Posts]].Title</td></tr>
+            <tr>
+                <td width="15%">&nbsp;</td>
+                <td>[@Current[.Posts]].Content</td>
+            </tr>-->
+            @EndEach
+            </table>
+            <br>
+            <br>
+            @EndIf
+            <a href="/blog/new">new entry</a>
+    </body>
+</html>
