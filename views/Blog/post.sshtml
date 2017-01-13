@@ -1,6 +1,8 @@
 <html>
     <body>
 
+    <a style="float:right" href="/blog/post/@Current.PostId/edit">edit</a>
+        
         <a href="/blog/">back</a>
 
         <h2>@Model.Title</h2>
