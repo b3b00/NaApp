@@ -6,13 +6,10 @@
         <form method="POST" action="/blog/update">
             <input type="hidden" name="postid" value="@Model.PostId"/>
             titre : <input type="text" name="title" value="@Model.Title"/><br>
-            contenu : <textarea name="content" id="content">some content</textarea><br>
+            contenu : <textarea name="content" id="content">@Model.Content</textarea><br>
             <input type="submit"  name="update"/>
         </form>
 
-        <h2>@Model.Title</h2>
-        <br>
-        <p>@Model.Content</p>
-        <br>        
+         
     </body>
 </html>

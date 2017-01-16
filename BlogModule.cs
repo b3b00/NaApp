@@ -25,11 +25,15 @@ namespace NaApp
         }
 
         private Post GetThePost(BloggingContext db, int postId) {
-            Post post = (from p in db.Posts
+            Post  post = null;
+            if (db.Posts.Count() > 0 ) {
+            post = (from p in db.Posts
                 where p.PostId == postId 
-                select p).First();
+                select p).First();                                
+            }
             return post;
         }
+        
 
         private object Home()
         {

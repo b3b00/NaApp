@@ -12,6 +12,24 @@
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "clean",
+            "args": [
+                //"${workspaceRoot}\\project.json"
+                "${workspaceRoot}\\NaApp.csproj"
+            ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "restore",
+            "args": [
+                //"${workspaceRoot}\\project.json"
+                "${workspaceRoot}\\NaApp.csproj"
+            ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
         }
     ]
 }

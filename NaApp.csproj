@@ -55,6 +55,10 @@
     <PackageReference Include="Microsoft.NETCore.App">
       <Version>1.0.1</Version>
     </PackageReference>
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory">
+      <Version>1.0.1</Version>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

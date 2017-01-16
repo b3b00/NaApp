@@ -10,7 +10,8 @@ namespace NaApp
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=./blog.db");
+            //optionsBuilder.UseSqlite("Filename=./blog.db");     
+            optionsBuilder.UseInMemoryDatabase();       
         }
     }
 

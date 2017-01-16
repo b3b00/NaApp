@@ -1,7 +1,7 @@
 <html>
     <body>
 
-    <a style="float:right" href="/blog/post/@Current.PostId/edit">edit</a>
+    <a style="float:right" href="/blog/edit/@Model.PostId">edit</a>
         
         <a href="/blog/">back</a>
 
