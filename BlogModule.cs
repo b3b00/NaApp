@@ -10,9 +10,13 @@ namespace NaApp
     {
 
         private Blog GetTheBlog(BloggingContext db) {
-            Blog theBlog = (from blg in db.Blogs 
+            Blog theBlog = null;
+            IEnumerable<Blog> blogs = (from blg in db.Blogs 
                     where blg.Url != null
-                    select blg).First();
+                    select blg);
+            if (blogs.Count() > 0) {
+                theBlog = blogs.First();
+            }
             return theBlog;
         }
 
@@ -39,12 +43,17 @@ namespace NaApp
         {
             using (var db = new BloggingContext())
             {
+
+
                 Blog theBlog = GetTheBlog(db);
 
-                List<Post> posts = GetPosts(db,theBlog);
-                
-
-                return View["views/blog/home.sshtml", theBlog];
+                if (theBlog != null) {
+                    List<Post> posts = GetPosts(db,theBlog);
+                    return View["views/blog/home.sshtml", theBlog];
+                }
+                else {
+                    return View["views/blog/create.html"];
+                }
             }
         }
 
@@ -113,6 +122,26 @@ namespace NaApp
             throw new NotImplementedException();
         }
 
+        private object CreateBlog(dynamic form)
+        {
+            using (var db = new BloggingContext())
+            {
+                Blog theBlog = new Blog();
+
+                
+                theBlog.Name = form.name;
+                theBlog.Url = form.url;
+                
+                db.Blogs.Add(theBlog);                
+                db.SaveChanges();
+
+                List<Post> posts = GetPosts(db,theBlog);
+
+                return View["views/blog/home.sshtml", theBlog];
+            }
+        }
+
+
         public BlogModule()
         {
             Get("/blog", _ => Home());
@@ -126,8 +155,8 @@ namespace NaApp
             Post("/blog/add", parameters =>  Add(this.Request.Form) );
 
             Post("/blog/update", parameters =>  Update(this.Request.Form) );
-
             
+            Post("blog/create", parameters => CreateBlog(this.Request.Form));
         }
 
         
